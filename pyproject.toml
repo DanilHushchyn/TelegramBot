@@ -7,8 +7,13 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.10"
-aiogram = "^3.0.0"
 python-dotenv = "^1.0.0"
+pydantic-settings = "^2.0.3"
+pymongo = "^4.5.0"
+mongoengine = "^0.27.0"
+aioredis = "^2.0.1"
+django-environ = "^0.11.2"
+httpx = {extras = ["http2"], version = "^0.25.0"}
 
 
 [build-system]

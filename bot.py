@@ -1,23 +1,28 @@
 import asyncio
 import logging
-from aiogram import Bot, Dispatcher, types
-from aiogram.filters.command import Command
 
-# Включаем логирование, чтобы не пропустить важные сообщения
-logging.basicConfig(level=logging.INFO)
-# Объект бота
-bot = Bot(token="12345678:AaBbCcDdEeFfGgHh")
-# Диспетчер
-dp = Dispatcher()
+from aiogram import Bot, Dispatcher
+from handlers import *
+import settings
 
-# Хэндлер на команду /start
-@dp.message(Command("start"))
-async def cmd_start(message: types.Message):
-    await message.answer("Hello!")
+bot = Bot(token=settings.BOT_TOKEN)
 
-# Запуск процесса поллинга новых апдейтов
+
 async def main():
-    await dp.start_polling(bot)
+    logging.basicConfig(level=logging.INFO)
+    dp = Dispatcher()
+    # Альтернативный вариант регистрации роутеров по одному на строку
+    # dp.include_router(authorization.router)
+    # dp.include_router(common.router)
+    # dp.include_router(all_announcements.router)
+    # dp.include_router(main_menu.router)
+    # dp.include_router(create_announcement.router)
+    # # Запускаем бота и пропускаем все накопленные входящие
+    # # Да, этот метод можно вызвать даже если у вас поллинг
+
+    await bot.delete_webhook(drop_pending_updates=True)
+    await dp.start_polling(bot, skip_updates=True)
+
 
 if __name__ == "__main__":
     asyncio.run(main())
