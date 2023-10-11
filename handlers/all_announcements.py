@@ -26,7 +26,6 @@ async def all_announcements(message: Message, state: FSMContext, page_num=0):
     elif page_num + 1 <= 0:
         page_num = len(resp) - 1
     item = resp[page_num]
-
     builder = InlineKeyboardBuilder()
     builder.add(types.InlineKeyboardButton(
         text="←",
@@ -52,7 +51,7 @@ async def all_announcements(message: Message, state: FSMContext, page_num=0):
         )
     )
 
-    await message.answer_photo(
+    msg = await message.answer_photo(
         URLInputFile(item['main_photo']),
         caption=
         _("<b>Адрес:</b> {address}\n"
@@ -102,12 +101,19 @@ async def all_announcements(message: Message, state: FSMContext, page_num=0):
 @router.callback_query(F.data.startswith("next_"))
 async def callbacks_num(callback: types.CallbackQuery, state: FSMContext):
     number = callback.data.split('_')[1]
+    message_id = callback.message.message_id
+    chat_id = callback.message.chat.id
+    await callback.message.bot.delete_message(chat_id=chat_id, message_id=message_id)
     await all_announcements(callback.message, state, int(number))
+
     await callback.answer()
 
 
 @router.callback_query(F.data.startswith("previous_"))
 async def callbacks_num(callback: types.CallbackQuery, state: FSMContext):
     number = callback.data.split('_')[1]
+    message_id = callback.message.message_id
+    chat_id = callback.message.chat.id
+    await callback.message.bot.delete_message(chat_id=chat_id, message_id=message_id)
     await all_announcements(callback.message, state, int(number))
     await callback.answer()

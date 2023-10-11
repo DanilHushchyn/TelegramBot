@@ -340,11 +340,11 @@ msgstr ""
 "<b>That's right?</b>\n"
 #: handlers/create_announcement.py:490
 msgid "<b>Ваша галерея пуста но всё ок</b>"
-msgstr "<b>Your gallery is empty but everything is ok<b>"
+msgstr "<b>Your gallery is empty but everything is ok</b>"
 
 #: handlers/create_announcement.py:492
 msgid "<b>Ваша галерея:</b>"
-msgstr "<b>Your gallery:<b>"
+msgstr "<b>Your gallery:</b>"
 
 #: handlers/create_announcement.py:525
 msgid "<b>Ваше объявление успешно создано</b>"

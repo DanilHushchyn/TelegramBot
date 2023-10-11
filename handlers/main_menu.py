@@ -21,11 +21,9 @@ async def cmd_start(message: types.Message):
 
 @router.message(F.text == __('🚪 Выход'))
 async def logout_handler(message: types.Message, state: FSMContext):
+    print('hello')
     client = UserAPIClient(user_id=message.chat.id)
     await client.logout()
-    current_state = state.get_state()
-    if current_state is None:
-        return
     await state.clear()
     await auth.authorization_handler(message=message, state=state)
 

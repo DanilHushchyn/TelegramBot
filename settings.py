@@ -23,6 +23,11 @@ HOST = env('HOST')
 
 # Database MongoDB
 MONGO_CLIENT = pymongo.MongoClient(env('MONGO_CLIENT'))
+try:
+    MONGO_CLIENT.admin.command('ping')
+    print("Pinged your deployment. You successfully connected to MongoDB!")
+except Exception as e:
+    print(e)
 MONGO_DB = MONGO_CLIENT[os.environ.get('MONGO_DB')]
 USERS = MONGO_DB[os.environ.get('MONGO_COLLECTION')]
 REDIS_STORAGE = Redis(host='redis', decode_responses=True)

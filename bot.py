@@ -13,7 +13,7 @@ from middlewares.locale import LocaleMiddleware
 
 i18n = I18n(path="locales", default_locale="ru", domain="messages")
 bot = Bot(token=settings.BOT_TOKEN)
-httpx_client = httpx.AsyncClient(http2=True,verify=False)
+httpx_client = httpx.AsyncClient(http2=True)
 redis_storage = RedisStorage(settings.REDIS_STORAGE)
 
 
