@@ -1,9 +1,8 @@
 import pymongo
-from aioredis import Redis
 import os
-from datetime import timedelta
 from pathlib import Path
 import environ
+from aioredis import Redis
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -18,17 +17,12 @@ BASE_DIR = Path(__file__).resolve().parent
 env = environ.Env()
 environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 
-
-
-
 # BOT
 BOT_TOKEN = env('BOT_TOKEN')
-
+HOST = env('HOST')
 
 # Database MongoDB
 MONGO_CLIENT = pymongo.MongoClient(env('MONGO_CLIENT'))
 MONGO_DB = MONGO_CLIENT[os.environ.get('MONGO_DB')]
 USERS = MONGO_DB[os.environ.get('MONGO_COLLECTION')]
-USERS.create_index('user_tg_id', unique=True)
-USERS.create_index('user_api_id', unique=True)
-USERS.create_index('email', unique=True)
+REDIS_STORAGE = Redis(host='redis', decode_responses=True)

@@ -1,32 +1,31 @@
-import httpx
 from aiogram import Router, F, types
-from aiogram.filters import Command
-from aiogram.types import Message, ReplyKeyboardRemove, URLInputFile
+from aiogram.fsm.context import FSMContext
+from aiogram.types import Message, URLInputFile
 from aiogram.utils.keyboard import InlineKeyboardBuilder
 from callbacks.main_callbacks import CoordinateCallbackFactory, GalleryCallbackFactory
-from keyboards.main import get_main_kb
-from keyboards.pagination import get_pagination_keyboard
-from test_lessons import dp
+import handlers.main_menu as main_menu
+from middlewares.auth import AuthMiddleware
+import swipe_api.requests as swipe_api
+from aiogram.utils.i18n import lazy_gettext as __
+from aiogram.utils.i18n import gettext as _
 
 router = Router()  # [1]
+router.message.middleware(AuthMiddleware())
 
 
-@router.message(F.text == '🗂 Список объявлений')
-async def all_announcements(message: Message, page_num=0):
-    resp = httpx.post('http://127.0.0.0:8000/api/v1/auth/login/', data={
-        "email": "badegox807@tipent.com",
-        "password": "sword123"
-    })
-    headers = {
-        "Authorization": f"Bearer {resp.json()['access']}"
-    }
-    resp = httpx.get('http://127.0.0.0:8000/api/v1/client/announcements/', headers=headers)
-    image_from_url = URLInputFile("https://picsum.photos/seed/groosha/400/300")
-    if page_num + 1 > len(resp.json()):
+@router.message(F.text == __('🗂 Список объявлений'))
+async def all_announcements(message: Message, state: FSMContext, page_num=0):
+    client = swipe_api.UserAPIClient(user_id=message.chat.id)
+    resp = await client.get_all_announcements()
+    if resp is None:
+        await message.answer(text=_('Ваши данные устарели, нужно перезайти'))
+        await main_menu.logout_handler(message=message, state=state)
+        return
+    if page_num + 1 > len(resp):
         page_num = 0
     elif page_num + 1 <= 0:
-        page_num = len(resp.json()) - 1
-    item = resp.json()[page_num]
+        page_num = len(resp) - 1
+    item = resp[page_num]
 
     builder = InlineKeyboardBuilder()
     builder.add(types.InlineKeyboardButton(
@@ -34,7 +33,7 @@ async def all_announcements(message: Message, page_num=0):
         callback_data=f"previous_{page_num - 1}")
     )
     builder.add(types.InlineKeyboardButton(
-        text=f"{page_num + 1}/{len(resp.json())}",
+        text=f"{page_num + 1}/{len(resp)}",
         callback_data="page_button")
     )
     builder.add(types.InlineKeyboardButton(
@@ -43,37 +42,57 @@ async def all_announcements(message: Message, page_num=0):
     )
 
     builder.row(types.InlineKeyboardButton(
-        text="Получить геопозицию",
+        text=_("Получить геопозицию"),
         callback_data=CoordinateCallbackFactory(longtitude=float(item['map_lon']),
                                                 latitude=float(item['map_lat'])).pack()
     ),
         types.InlineKeyboardButton(
-            text="Просмотреть галерею",
+            text=_("Просмотреть галерею"),
             callback_data=GalleryCallbackFactory(id=item['id']).pack()
         )
     )
 
     await message.answer_photo(
-        image_from_url,
+        URLInputFile(item['main_photo']),
         caption=
-        f"<b>Адрес:</b> {item['description']}\n"
-        f"<b>Актуально:</b> {'ДА' if item['is_actual'] else 'НЕТ'}\n"
-        f"<b>Модерация:</b> {'Пройдена' if item['is_moderated'] else 'Не пройдена'}\n"
-        f"<b>Статус модерации:</b> {item['moderation_status'] if item['moderation_status'] else '...'}\n"
-        f"<b>Документ основания:</b> {item['grounds_doc']}\n"
-        f"<b>Назначение:</b> {item['appointment']}\n"
-        f"<b>Количество комнат:</b> {item['room_count']}\n"
-        f"<b>Планировка:</b> {item['layout']}\n"
-        f"<b>Жилое состояние:</b> {item['living_condition']}\n"
-        f"<b>Общая площадь:</b> {item['square']}\n"
-        f"<b>Площадь кухни:</b> {item['kitchen_square']}\n"
-        f"<b>Балкон/лоджия:</b> {item['balcony_or_loggia']}\n"
-        f"<b>Тип отопления:</b> {item['heating_type']}\n"
-        f"<b>Варианты расчета:</b> {item['payment_type']}\n"
-        f"<b>Коммисия агенту:</b> {item['agent_commission']}\n"
-        f"<b>Способ связи:</b> {item['communication_type']}\n"
-        f"<b>Описание:</b> {item['description']}\n"
-        f"<b>Цена:</b> {item['price']}\n",
+        _("<b>Адрес:</b> {address}\n"
+          "<b>Актуально:</b> {actual}\n"
+          "<b>Модерация:</b> {moderation}\n"
+          "<b>Статус модерации:</b> {moderation_status}\n"
+          "<b>Документ основания:</b> {grounds_doc}\n"
+          "<b>Назначение:</b> {appointment}\n"
+          "<b>Количество комнат:</b> {room_count}\n"
+          "<b>Планировка:</b> {layout}\n"
+          "<b>Жилое состояние:</b> {living_condition}\n"
+          "<b>Общая площадь:</b> {square}\n"
+          "<b>Площадь кухни:</b> {kitchen_square}\n"
+          "<b>Балкон/лоджия:</b> {balcony_or_loggia}\n"
+          "<b>Тип отопления:</b> {heating_type}\n"
+          "<b>Варианты расчета:</b> {payment_type}\n"
+          "<b>Коммисия агенту:</b> {agent_commission}\n"
+          "<b>Способ связи:</b> {communication_type}\n"
+          "<b>Описание:</b> {description}\n"
+          "<b>Цена:</b> {price}\n"
+          ).format(
+            address=item['address'],
+            actual='ДА' if item['is_actual'] else 'НЕТ',
+            moderation='Пройдена' if item['is_moderated'] else 'Не пройдена',
+            moderation_status=item['moderation_status'] if item['moderation_status'] else '...',
+            grounds_doc=item['grounds_doc'],
+            appointment=item['appointment'],
+            room_count=item['room_count'],
+            layout=item['layout'],
+            living_condition=item['living_condition'],
+            square=item['square'],
+            kitchen_square=item['kitchen_square'],
+            balcony_or_loggia='ДА' if item['balcony_or_loggia'] else 'НЕТ',
+            heating_type=item['heating_type'],
+            payment_type=item['payment_type'],
+            agent_commission=item['agent_commission'],
+            communication_type=item['communication_type'],
+            description=item['description'],
+            price=item['price'],
+        ),
         parse_mode="HTML",
         reply_markup=builder.as_markup(resize_keyboard=True)
 
@@ -81,14 +100,14 @@ async def all_announcements(message: Message, page_num=0):
 
 
 @router.callback_query(F.data.startswith("next_"))
-async def callbacks_num(callback: types.CallbackQuery):
+async def callbacks_num(callback: types.CallbackQuery, state: FSMContext):
     number = callback.data.split('_')[1]
-    await all_announcements(callback.message, int(number))
+    await all_announcements(callback.message, state, int(number))
     await callback.answer()
 
 
 @router.callback_query(F.data.startswith("previous_"))
-async def callbacks_num(callback: types.CallbackQuery):
+async def callbacks_num(callback: types.CallbackQuery, state: FSMContext):
     number = callback.data.split('_')[1]
-    await all_announcements(callback.message, int(number))
+    await all_announcements(callback.message, state, int(number))
     await callback.answer()

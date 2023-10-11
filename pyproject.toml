@@ -14,6 +14,9 @@ mongoengine = "^0.27.0"
 aioredis = "^2.0.1"
 django-environ = "^0.11.2"
 httpx = {extras = ["http2"], version = "^0.25.0"}
+aiogram = "^3.1.1"
+babel = "^2.13.0"
+redis = "^5.0.1"
 
 
 [build-system]

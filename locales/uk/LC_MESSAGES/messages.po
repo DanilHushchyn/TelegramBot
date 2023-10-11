@@ -1,0 +1,440 @@
+# Ukrainian translations for PROJECT.
+# Copyright (C) 2023 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2023-10-11 14:10+0300\n"
+"PO-Revision-Date: 2023-10-11 14:11+0300\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: uk\n"
+"Language-Team: uk <LL@li.org>\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.13.0\n"
+
+#: handlers/all_announcements.py:21 handlers/create_announcement.py:522
+#: handlers/main_menu.py:38 handlers/main_menu.py:80 handlers/main_menu.py:159
+msgid "Ваши данные устарели, нужно перезайти"
+msgstr "Your data is out of date, you need to re-login"
+
+#: handlers/all_announcements.py:45 handlers/main_menu.py:87
+msgid "Получить геопозицию"
+msgstr "Get geolocation"
+
+#: handlers/all_announcements.py:50 handlers/main_menu.py:92
+msgid "Просмотреть галерею"
+msgstr "View gallery"
+
+#: handlers/all_announcements.py:58 handlers/main_menu.py:99
+msgid ""
+"<b>Адрес:</b> {address}\n"
+"<b>Актуально:</b> {actual}\n"
+"<b>Модерация:</b> {moderation}\n"
+"<b>Статус модерации:</b> {moderation_status}\n"
+"<b>Документ основания:</b> {grounds_doc}\n"
+"<b>Назначение:</b> {appointment}\n"
+"<b>Количество комнат:</b> {room_count}\n"
+"<b>Планировка:</b> {layout}\n"
+"<b>Жилое состояние:</b> {living_condition}\n"
+"<b>Общая площадь:</b> {square}\n"
+"<b>Площадь кухни:</b> {kitchen_square}\n"
+"<b>Балкон/лоджия:</b> {balcony_or_loggia}\n"
+"<b>Тип отопления:</b> {heating_type}\n"
+"<b>Варианты расчета:</b> {payment_type}\n"
+"<b>Коммисия агенту:</b> {agent_commission}\n"
+"<b>Способ связи:</b> {communication_type}\n"
+"<b>Описание:</b> {description}\n"
+"<b>Цена:</b> {price}\n"
+msgstr ""
+"<b>Address:</b> {address}\n"
+"<b>Actual:</b> {actual}\n"
+"<b>Moderation:</b> {moderation}\n"
+"<b>Moderation status:</b> {moderation_status}\n"
+"<b>Ground document:</b> {grounds_doc}\n"
+"<b>Appointment:</b> {appointment}\n"
+"<b>Room count:</b> {room_count}\n"
+"<b>Layout:</b> {layout}\n"
+"<b>Living condition:</b> {living_condition}\n"
+"<b>Total square:</b> {square}\n"
+"<b>Kitchen square:</b> {kitchen_square}\n"
+"<b>Balcony/Loggia:</b> {balcony_or_loggia}\n"
+"<b>Heating type:</b> {heating_type}\n"
+"<b>Payment type:</b> {payment_type}\n"
+"<b>Agent commission:</b> {agent_commission}\n"
+"<b>Communication type:</b> {communication_type}\n"
+"<b>Description:</b> {description}\n"
+"<b>Price:</b> {price}\n"
+
+#: handlers/authorization.py:28
+msgid "Выберите язык..."
+msgstr "Choose language..."
+
+#: handlers/authorization.py:46
+msgid "Выберите..."
+msgstr "Choose..."
+
+#: handlers/authorization.py:56 handlers/authorization.py:66
+#: handlers/authorization.py:89 handlers/authorization.py:113
+#: handlers/authorization.py:140 handlers/authorization.py:175
+#: handlers/authorization.py:210 handlers/authorization.py:246
+#: handlers/authorization.py:289 handlers/create_announcement.py:114
+#: handlers/create_announcement.py:126 handlers/create_announcement.py:143
+#: handlers/create_announcement.py:157 handlers/create_announcement.py:412
+#: handlers/create_announcement.py:448 keyboards/authorization.py:37
+#: keyboards/main.py:21
+msgid "Отмена"
+msgstr "Cancel"
+
+#: handlers/authorization.py:58 handlers/authorization.py:212
+msgid "Введите свой email пожалуйста"
+msgstr "Please enter your email"
+
+#: handlers/authorization.py:71 handlers/authorization.py:234
+#: handlers/authorization.py:249
+msgid "Неверный формат email, попробуйте ещё раз"
+msgstr "Invalid email format, try again"
+
+#: handlers/authorization.py:80 handlers/authorization.py:256
+msgid "Введите свой пароль пожалуйста"
+msgstr "Please enter your password"
+
+#: handlers/authorization.py:88 handlers/authorization.py:174
+#: handlers/authorization.py:209 handlers/authorization.py:245
+#: handlers/authorization.py:288 handlers/create_announcement.py:113
+#: handlers/create_announcement.py:411 handlers/create_announcement.py:447
+#: keyboards/main.py:20
+msgid "Назад"
+msgstr "Back"
+
+#: handlers/authorization.py:94 handlers/authorization.py:278
+#: handlers/authorization.py:294
+msgid ""
+"Введённый пароль слишком короткий. Он должен содержать как минимум 8 "
+"символов"
+msgstr "The entered password is too short. It must contain at least 8 characters"
+
+#: handlers/authorization.py:101
+msgid ""
+"Проверьте данные:\n"
+"\n"
+"Email: {email}\n"
+"Пароль: {password}\n"
+"Всё верно?"
+msgstr ""
+"Check the data:\n"
+"\n"
+"Email: {email}\n"
+"Password: {password}\n"
+"That's right?"
+#: handlers/authorization.py:110
+msgid "Войти"
+msgstr "Enter"
+
+#: handlers/authorization.py:131
+msgid "Почта или пароль указаны не верно или вы не подтвердили почту"
+msgstr "The email or password is incorrect or you have not confirmed your email"
+
+#: handlers/authorization.py:142
+msgid "Введите своё имя пожалуйста"
+msgstr "Please enter your name"
+
+#: handlers/authorization.py:150
+msgid "Измените имя если нужно"
+msgstr "Change the name if necessary"
+
+#: handlers/authorization.py:177
+msgid "Введите свою фамилию пожалуйста"
+msgstr "Please enter your last name"
+
+#: handlers/authorization.py:185
+msgid "Измените фамилию если нужно"
+msgstr "Change your last name if necessary"
+
+#: handlers/authorization.py:193 handlers/authorization.py:228
+#: handlers/authorization.py:272
+msgid "вернутся к регистрации"
+msgstr "return to registration"
+
+#: handlers/authorization.py:220
+msgid "Измените email если нужно"
+msgstr "Change email if necessary"
+
+#: handlers/authorization.py:264
+msgid "Измените пароль если нужно"
+msgstr "Change the password if necessary"
+
+#: handlers/authorization.py:300
+msgid ""
+"Проверьте данные:\n"
+"\n"
+"Имя: {first_name}\n"
+"Фамилия: {last_name}\n"
+"Email: {email}\n"
+"Пароль: {password}\n"
+"Всё верно?"
+msgstr ""
+"Check the data:\n"
+"\n"
+"Name: {first_name}\n"
+"Last name: {last_name}\n"
+"Email: {email}\n"
+"Password: {password}\n"
+"That's right?"
+
+#: handlers/authorization.py:320
+msgid ""
+"Письмо с подтверждением выслано вам на почту, подтвердите там регистрацию"
+" и можетезаходить."
+msgstr "A confirmation letter has been sent to your email, confirm your registration there and you can come in."
+
+
+#: handlers/authorization.py:323
+msgid "Пользователь с таким email уже зарегистрирован"
+msgstr "A user with this email is already registered"
+
+#: handlers/common.py:23
+msgid "Действие отменено, вы вернулись в главное меню"
+msgstr "Action cancelled, you are returned to the main menu"
+
+#: handlers/create_announcement.py:124
+msgid "Поделить геолокацией"
+msgstr "Share geolocation"
+
+#: handlers/create_announcement.py:128
+msgid "Требуется запросить геолокацию для вашего объявления:"
+msgstr "You need to request a geolocation for your ad:"
+
+#: handlers/create_announcement.py:146
+msgid "Теперь пожалуйста укажите адрес:"
+msgstr "Now please enter your address:"
+
+#: handlers/create_announcement.py:165
+msgid "Спасибо. Теперь, пожалуйста, укажите описание:"
+msgstr "Thank you. Now please provide a description:"
+
+#: handlers/create_announcement.py:180
+msgid "Спасибо. Теперь, пожалуйста, укажите  документ основания:"
+msgstr  "Thank you. Now please provide the document of basis:"
+
+
+#: handlers/create_announcement.py:195
+msgid "Спасибо. Теперь, пожалуйста, укажите  цель:"
+msgstr "Thank you. Now please specify the appointment:"
+
+#: handlers/create_announcement.py:210
+msgid "Спасибо. Теперь, пожалуйста, укажите  кол-во комнат:"
+msgstr "Thank you. Now please indicate the number of rooms:"
+
+#: handlers/create_announcement.py:226
+msgid "Спасибо. Теперь, пожалуйста, укажите планировку:"
+msgstr "Thank you. Now please indicate the layout:"
+
+#: handlers/create_announcement.py:242
+msgid "Спасибо. Теперь, пожалуйста, укажите жилое состояние:"
+msgstr "Thank you. Now please indicate your living condition:"
+
+#: handlers/create_announcement.py:257
+msgid "Спасибо. Теперь, пожалуйста, укажите общую площадь:"
+msgstr  "Thank you. Now please indicate the total square:"
+
+#: handlers/create_announcement.py:274
+msgid "Спасибо. Теперь, пожалуйста, укажите площадь кухни:"
+msgstr "Thank you. Now please indicate the kitchen square:"
+
+#: handlers/create_announcement.py:291
+msgid ""
+"Не может общая площадь быть меньше  площади кухни!!! Введите пожалуйста "
+"другое значение"
+msgstr "The total area cannot be less than the kitchen area!!! Please enter another value"
+
+#: handlers/create_announcement.py:296
+msgid "Спасибо. Теперь, пожалуйста, укажите есть ли балкон/лоджия:"
+msgstr "Thank you. Now, please indicate whether there is a balcony:"
+
+#: handlers/create_announcement.py:309
+msgid "Да"
+msgstr "Yes"
+
+#: handlers/create_announcement.py:314
+msgid "Спасибо. Теперь, пожалуйста, укажите тип отопления:"
+msgstr "Thank you. Now please specify your heating type:"
+
+#: handlers/create_announcement.py:329
+msgid "Спасибо. Теперь, пожалуйста, укажите способ оплаты:"
+msgstr "Thank you. Now please indicate your payment method:"
+
+#: handlers/create_announcement.py:344
+msgid "Спасибо. Теперь, пожалуйста, укажите величину комиссии агента:"
+msgstr "Thank you. Now, please indicate the amount of the agent's commission:"
+
+#: handlers/create_announcement.py:359
+msgid "Спасибо. Теперь, пожалуйста, укажите способ связи:"
+msgstr "Thank you. Now please indicate your contact method:"
+
+#: handlers/create_announcement.py:375
+msgid "Спасибо. Теперь, пожалуйста, укажите цену:"
+msgstr "Thank you. Now please enter the price:"
+
+#: handlers/create_announcement.py:392
+msgid "Спасибо. Теперь, пожалуйста, загрузите главную картинку объявления:"
+msgstr "Thank you. Now please upload the main ad image:"
+
+#: handlers/create_announcement.py:409
+msgid "Продолжить"
+msgstr "Continue"
+
+#: handlers/create_announcement.py:415
+msgid ""
+"<b>ВАЖНО:</b>\n"
+"Теперь, пожалуйста, загрузите несколько картинок для галереи.\n"
+"При этом по одной картинке в чат для будущей галереи, а не все за раз.\n"
+"После нажмите продолжить"
+msgstr ""
+"<b>IMPORTANT:<b>\n" "Now, please upload several pictures for the gallery.\nAt the same time, one picture per chat for the future gallery, and not all at once.\nThen click continue"
+
+#: handlers/create_announcement.py:445
+msgid "➕ Создать"
+msgstr "➕ Create"
+
+#: handlers/create_announcement.py:453
+msgid ""
+"<b>Адрес:</b> {address}\n"
+"<b>Описание:</b> {description}\n"
+"<b>Документ основания:</b> {grounds_doc}\n"
+"<b>Назначение:</b> {appointment}\n"
+"<b>Количество комнат:</b> {room_count}\n"
+"<b>Планировка:</b> {layout}\n"
+"<b>Жилое состояние:</b> {living_condition}\n"
+"<b>Общая площадь:</b> {square}\n"
+"<b>Площадь кухни:</b> {kitchen_square}\n"
+"<b>Балкон/лоджия:</b> {balcony_or_loggia}\n"
+"<b>Тип отопления:</b> {heating_type}\n"
+"<b>Варианты расчета:</b> {payment_type}\n"
+"<b>Коммисия агенту:</b> {agent_commission}\n"
+"<b>Способ связи:</b> {communication_type}\n"
+"<b>Цена:</b> {price}\n"
+"<b>Всё верно?</b>\n"
+msgstr ""
+"<b>Adress:</b> {address}\n"
+"<b>Description:</b> {description}\n"
+"<b>Ground documents:</b> {grounds_doc}\n"
+"<b>Appointment:</b> {appointment}\n"
+"<b>Room count:</b> {room_count}\n"
+"<b>Layout:</b> {layout}\n"
+"<b>Living condition:</b> {living_condition}\n"
+"<b>Total square:</b> {square}\n"
+"<b>Kitchen square:</b> {kitchen_square}\n"
+"<b>Balcony/loggia:</b> {balcony_or_loggia}\n"
+"<b>Heating type:</b> {heating_type}\n"
+"<b>Payment type:</b> {payment_type}\n"
+"<b>Agent commission:</b> {agent_commission}\n"
+"<b>Communication type:</b> {communication_type}\n"
+"<b>Price:</b> {price}\n"
+"<b>That's right?</b>\n"
+#: handlers/create_announcement.py:490
+msgid "<b>Ваша галерея пуста но всё ок</b>"
+msgstr "<b>Your gallery is empty but everything is ok<b>"
+
+#: handlers/create_announcement.py:492
+msgid "<b>Ваша галерея:</b>"
+msgstr "<b>Your gallery:<b>"
+
+#: handlers/create_announcement.py:525
+msgid "<b>Ваше объявление успешно создано</b>"
+msgstr "<b>Your ad has been successfully created</b>"
+
+#: handlers/main_menu.py:19
+msgid "Главное меню: "
+msgstr "Main menu: "
+
+#: handlers/main_menu.py:43
+msgid "📑 Список моих объявлений"
+msgstr "📑 List of my announcements"
+
+#: handlers/main_menu.py:50
+msgid ""
+"<b>Мой Аккаунт:</b>\n"
+"<b>Фамилия:</b> {surname}\n"
+"<b>Имя:</b> {name}\n"
+"<b>Email:</b> {email}\n"
+"<b>Телефон:</b> {phone}\n"
+"👥 <b>Контакты агента</b> \n"
+"Фамилия: {agent_surname}\n"
+"Имя: {agent_name}\n"
+"Email: {agent_email}\n"
+"Телефон: {agent_phone}\n"
+msgstr ""
+"<b>My account:</b>\n"
+"<b>Last name:</b> {surname}\n"
+"<b>Name:</b> {name}\n"
+"<b>Email:</b> {email}\n"
+"<b>Phone:</b> {phone}\n"
+"👥 <b>Agent contacts</b> \n"
+"Last name: {agent_surname}\n"
+"Name: {agent_name}\n"
+"Email: {agent_email}\n"
+"Phone: {agent_phone}\n"
+#: keyboards/authorization.py:16
+msgid "Вход"
+msgstr "Login"
+
+#: keyboards/authorization.py:17
+msgid "Регистрация"
+msgstr "Registration"
+
+#: keyboards/authorization.py:18
+msgid "Выбор языка"
+msgstr "Language selection"
+
+
+#: keyboards/authorization.py:26
+msgid "Зарегистрироваться"
+msgstr "Register"
+
+#: keyboards/authorization.py:29
+msgid "Редактировать email"
+msgstr "Edit email"
+
+#: keyboards/authorization.py:30
+msgid "Редактировать пароль"
+msgstr "Edit password"
+
+#: keyboards/authorization.py:33
+msgid "Редактировать имя"
+msgstr "Edit name"
+
+#: keyboards/authorization.py:34
+msgid "Редактировать фамилию"
+msgstr "Edit last name"
+
+#: keyboards/authorization.py:50
+msgid "Вернутся к регистрации"
+msgstr "Return to registration"
+
+#: keyboards/main.py:9
+msgid "🗂 Список объявлений"
+msgstr "🗂 List of announcements"
+
+#: keyboards/main.py:10
+msgid "➕ Создать объявление"
+msgstr "➕ Create announcement"
+
+#: keyboards/main.py:11
+msgid "👤 Мой профиль"
+msgstr "👤 My profile"
+
+#: keyboards/main.py:12
+msgid "🚪 Выход"
+msgstr "🚪 Exit"
+
+#: middlewares/auth.py:26
+msgid "Вы не авторизованы"
+msgstr "You are not authorized"
+
